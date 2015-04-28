@@ -60,6 +60,14 @@ def repository_link_url(namespace, repository, link_id):
   """ Returns the contents of a link under a repository. """
   return _BASE_URL % ('repositories/%s/%s/links/%s' % (namespace, repository, link_id))
 
+def repository_services_url(namespace, repository):
+  """ Returns the list of services in a repository. """
+  return _BASE_URL % ('repositories/%s/%s/services' % (namespace, repository))
+
+def repository_service_url(namespace, repository, service_id):
+  """ Returns the contents of a service under a repository. """
+  return _BASE_URL % ('repositories/%s/%s/services/%s' % (namespace, repository, service_id))
+
 def repository_main_branch_url(namespace, repository):
   """ Returns the name of the main branch for the repository. """
   return _BASE_URL % ('repositories/%s/%s/main-branch' % (namespace, repository))
