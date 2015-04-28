@@ -50,19 +50,7 @@ class BitBucket(object):
 
       return (True, text)
 
-    # 300-399: Unauthorized.
-    if status_code / 100 == 3:
-      return (False, None, 'Unauthorized')
-
-    # 400-499: Service issue.
-    if status_code / 100 == 4:
-      return (False, None, 'Unknown service')
-
-    # 500+: Server error.
-    if status_code / 100 == 5:
-      return (False, None, 'Server error')
-
-    return (False, None, error)
+    return (False, None, error or 'Error: %s' % status_code)
 
 
   def _get_request_token(self):
