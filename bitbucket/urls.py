@@ -34,7 +34,7 @@ def repository_branches_tags_url(namespace, repository):
 
 def repository_manifest_url(namespace, repository, revision):
   """ URL for retrieving a manifest of a revision of a repository. """
-  return _BASE_URL % ('repositories/%s/%s/%s' % (namespace, repository, revision))
+  return _BASE_URL % ('repositories/%s/%s/manifest/%s' % (namespace, repository, revision))
 
 def repository_path_contents_url(namespace, repository, revision, path):
   """ Returns the contents of the path (file or directory) under a repository. """
