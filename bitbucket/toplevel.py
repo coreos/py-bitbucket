@@ -48,7 +48,7 @@ class BitBucket(object):
       except ValueError:
         pass
 
-      return (True, text)
+      return (True, text, None)
 
     return (False, None, error or 'Error: %s' % status_code)
 
