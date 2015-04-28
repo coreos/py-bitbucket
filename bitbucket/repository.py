@@ -2,7 +2,7 @@
 
 from urls import (repository_branches_url, repository_tags_url, repository_branches_tags_url,
                   repository_manifest_url, repository_path_contents_url,
-                  repository_path_raw_contents_url)
+                  repository_path_raw_contents_url, repository_main_branch_url)
 
 from deploykeys import BitBucketRepositoryDeployKeysClient
 
@@ -30,6 +30,12 @@ class BitBucketRepositoryClient(object):
     return BitBucketRepositoryDeployKeysClient(self._dispatcher, self._access_token,
                                                self._access_token_secret, self._namespace,
                                                self._repository_name)
+
+  def get_main_branch(self):
+    """ Returns the main branch for this repository. """
+    url = repository_main_branch_url(self._namespace, self._repository_name)
+    return self._dispatcher.dispatch(url, access_token=self._access_token,
+                                          access_token_secret=self._access_token_secret)
 
   def get_branches(self):
     """ Returns the list of branches in this repository. """

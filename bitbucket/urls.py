@@ -52,3 +52,6 @@ def repository_deploy_key_url(namespace, repository, key_id):
   """ Returns the contents of a deploy key under a repository. """
   return _BASE_URL % ('repositories/%s/%s/deploy-keys/%s' % (namespace, repository, key_id))
 
+def repository_main_branch_url(namespace, repository):
+  """ Returns the name of the main branch for the repository. """
+  return _BASE_URL % ('repositories/%s/%s/main-branch' % (namespace, repository))
