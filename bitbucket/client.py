@@ -2,6 +2,7 @@
 
 from urls import current_user_url, current_user_repos_url
 from namespace import BitBucketNamespaceClient
+from accounts import BitBucketAccountsClient
 
 class BitBucketClient(object):
   """ A client for talking to the BitBucket API. """
@@ -27,4 +28,6 @@ class BitBucketClient(object):
     return BitBucketNamespaceClient(self._dispatcher, self._access_token, self._access_token_secret,
                                     namespace)
 
-
+  def accounts(self):
+    """ Returns a client for accessing account information. """
+    return BitBucketAccountsClient(self._dispatcher, self._access_token, self._access_token_secret)
