@@ -7,6 +7,7 @@ from urls import (repository_branches_url, repository_tags_url, repository_branc
 from deploykeys import BitBucketRepositoryDeployKeysClient
 from links import BitBucketRepositoryLinksClient
 from services import BitBucketRepositoryServicesClient
+from changesets import BitBucketRepositoryChangeSetsClient
 
 class BitBucketRepositoryClient(object):
   """ Client class representing a repository in bitbucket. """
@@ -26,6 +27,12 @@ class BitBucketRepositoryClient(object):
   def repository_name(self):
     """ Returns the repository name. """
     return self._repository_name
+
+  def changesets(self):
+    """ Returns a resource for managing the changesets under this repository. """
+    return BitBucketRepositoryChangeSetsClient(self._dispatcher, self._access_token,
+                                              self._access_token_secret, self._namespace,
+                                              self._repository_name)
 
   def services(self):
     """ Returns a resource for managing the services under this repository. """

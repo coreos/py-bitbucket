@@ -71,3 +71,12 @@ def repository_service_url(namespace, repository, service_id):
 def repository_main_branch_url(namespace, repository):
   """ Returns the name of the main branch for the repository. """
   return _BASE_URL % ('repositories/%s/%s/main-branch' % (namespace, repository))
+
+def repository_changesets_url(namespace, repository):
+  """ Returns the list of changesets in a repository. """
+  return _BASE_URL % ('repositories/%s/%s/changesets' % (namespace, repository))
+
+def repository_changeset_url(namespace, repository, node_id):
+  """ Returns the contents of a changeset under a repository. """
+  return _BASE_URL % ('repositories/%s/%s/changeset/%s' % (namespace, repository, node_id))
+
