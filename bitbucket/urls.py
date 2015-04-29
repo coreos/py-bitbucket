@@ -78,7 +78,7 @@ def repository_changesets_url(namespace, repository):
 
 def repository_changeset_url(namespace, repository, node_id):
   """ Returns the contents of a changeset under a repository. """
-  return _BASE_URL % ('repositories/%s/%s/changeset/%s' % (namespace, repository, node_id))
+  return _BASE_URL % ('repositories/%s/%s/changesets/%s' % (namespace, repository, node_id))
 
 def account_profile_url(accountname):
   """ Returns the account profile information for the given account. """
