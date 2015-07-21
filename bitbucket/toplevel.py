@@ -26,13 +26,22 @@ class BitBucket(object):
     return BitBucketClient(self, access_token, access_token_secret)
 
 
-  def dispatch(self, url, access_token, access_token_secret, method='GET', params=None, **kwargs):
+  def dispatch(self, api_url, access_token, access_token_secret, method='GET', params=None,
+               json_body=False, **kwargs):
     """ Dispatches a signed request to the given URL, with the given access token and secret. """
     oauth = OAuth1(self._consumer_key, client_secret=self._consumer_secret,
                    resource_owner_key=access_token, resource_owner_secret=access_token_secret)
 
+    data = kwargs
+    headers = {}
+
+    if json_body:
+      headers['Content-Type'] = 'application/json'
+      data = json.dumps(data)
+
     session = Session()
-    request = Request(method=method, url=url, auth=oauth, params=params, data=kwargs)
+    request = Request(method=method, url=api_url, auth=oauth, params=params, data=data,
+                      headers=headers)
     response = session.send(request.prepare())
 
     status_code = response.status_code

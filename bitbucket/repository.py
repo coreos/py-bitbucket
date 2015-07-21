@@ -8,6 +8,7 @@ from deploykeys import BitBucketRepositoryDeployKeysClient
 from links import BitBucketRepositoryLinksClient
 from services import BitBucketRepositoryServicesClient
 from changesets import BitBucketRepositoryChangeSetsClient
+from webhooks import BitBucketRepositoryWebhooksClient
 
 class BitBucketRepositoryClient(object):
   """ Client class representing a repository in bitbucket. """
@@ -33,6 +34,12 @@ class BitBucketRepositoryClient(object):
     return BitBucketRepositoryChangeSetsClient(self._dispatcher, self._access_token,
                                               self._access_token_secret, self._namespace,
                                               self._repository_name)
+
+  def webhooks(self):
+    """ Returns a resource for managing the webhooks under this repository. """
+    return BitBucketRepositoryWebhooksClient(self._dispatcher, self._access_token,
+                                             self._access_token_secret, self._namespace,
+                                             self._repository_name)
 
   def services(self):
     """ Returns a resource for managing the services under this repository. """
