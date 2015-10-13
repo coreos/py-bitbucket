@@ -4,7 +4,7 @@ def example():
   consumer_key = raw_input('Enter your consumer key: ')
   consumer_secret = raw_input('Enter your consumer secret: ')
 
-  bb = BitBucket(consumer_key, consumer_secret, 'http://localhost/')
+  bb = BitBucket(consumer_key, consumer_secret, 'http://localhost/', timeout=5)
   (result, data, error_msg) = bb.get_authorization_url()
   if not result:
     print error_msg

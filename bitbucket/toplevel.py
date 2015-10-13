@@ -16,10 +16,11 @@ from client import BitBucketClient
 
 class BitBucket(object):
   """ This is the main class for interacting with the BitBucket API (V1). """
-  def __init__(self, consumer_key, consumer_secret, callback_url):
+  def __init__(self, consumer_key, consumer_secret, callback_url, timeout=None):
     self._consumer_key = consumer_key
     self._consumer_secret = consumer_secret
     self._callback_url = callback_url
+    self._timeout = timeout
 
   def get_authorized_client(self, access_token, access_token_secret):
     """ Returns a client for talking to an authorized endpoint. """
@@ -41,7 +42,7 @@ class BitBucket(object):
 
     session = Session()
     request = Request(method=method, url=api_url, auth=oauth, params=params, data=data,
-                      headers=headers)
+                      headers=headers, timeout=self._timeout)
     response = session.send(request.prepare())
 
     status_code = response.status_code
