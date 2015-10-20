@@ -42,8 +42,8 @@ class BitBucket(object):
 
     session = Session()
     request = Request(method=method, url=api_url, auth=oauth, params=params, data=data,
-                      headers=headers, timeout=self._timeout)
-    response = session.send(request.prepare())
+                      headers=headers)
+    response = session.send(request.prepare(), timeout=self._timeout)
 
     status_code = response.status_code
     text = response.text
@@ -70,7 +70,7 @@ class BitBucket(object):
     oauth = OAuth1(self._consumer_key, client_secret=self._consumer_secret,
                    callback_uri=self._callback_url)
 
-    request = requests.post(request_token_url(), auth=oauth)
+    request = requests.post(request_token_url(), auth=oauth, timeout=self._timeout)
     if request.status_code == 200:
       credentials = parse_qs(request.content)
       token = (credentials.get('oauth_token')[0], credentials.get('oauth_token_secret')[0])
@@ -105,7 +105,7 @@ class BitBucket(object):
                    resource_owner_key=access_token, resource_owner_secret=access_token_secret,
                    verifier=verifier)
 
-    request = requests.post(access_token_url(), auth=oauth)
+    request = requests.post(access_token_url(), auth=oauth, timeout=self._timeout)
     if request.status_code == 200:
       credentials = parse_qs(request.content)
       token = (credentials.get('oauth_token')[0], credentials.get('oauth_token_secret')[0])
