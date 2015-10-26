@@ -3,6 +3,7 @@ from requests import Request, Session
 from requests_oauthlib import OAuth1
 
 import requests
+import requests.exceptions
 import json
 
 try:
@@ -43,7 +44,13 @@ class BitBucket(object):
     session = Session()
     request = Request(method=method, url=api_url, auth=oauth, params=params, data=data,
                       headers=headers)
-    response = session.send(request.prepare(), timeout=self._timeout)
+
+    try:
+      response = session.send(request.prepare(), timeout=self._timeout)
+    except requests.exceptions.ReadTimeout:
+      return (False, None, 'Timeout when contacting BitBucket')
+    except requests.exceptions.RequestException as rex:
+      return (False, None, 'Exception when contacting BitBucket: %s' % rex.message)
 
     status_code = response.status_code
     text = response.text
@@ -105,7 +112,13 @@ class BitBucket(object):
                    resource_owner_key=access_token, resource_owner_secret=access_token_secret,
                    verifier=verifier)
 
-    request = requests.post(access_token_url(), auth=oauth, timeout=self._timeout)
+    try:
+      request = requests.post(access_token_url(), auth=oauth, timeout=self._timeout)
+    except requests.exceptions.ReadTimeout:
+      return (False, None, 'Timeout when contacting BitBucket')
+    except requests.exceptions.RequestException as rex:
+      return (False, None, 'Exception when contacting BitBucket: %s' % rex.message)
+
     if request.status_code == 200:
       credentials = parse_qs(request.content)
       token = (credentials.get('oauth_token')[0], credentials.get('oauth_token_secret')[0])
