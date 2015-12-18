@@ -54,14 +54,15 @@ class BitBucketRepositoryWebhooksClient(object):
                                      access_token_secret=self._access_token_secret, json_body=True,
                                      **data)
 
-  def create(self, description, hook_url, events, active=True):
+  def create(self, description, hook_url, events, active=True, skip_cert_verification=False):
     """ Creates a new webhook. """
     url = repository_webhooks_url(self._namespace, self._repository_name)
     data = {
       'description': description,
       'url': hook_url,
       'active': active,
-      'events': events
+      'events': events,
+      'skip_cert_verification': skip_cert_verification,
     }
 
     return self._dispatcher.dispatch(url, method='POST', access_token=self._access_token,
