@@ -2,7 +2,8 @@
 
 from urls import (repository_branches_url, repository_tags_url, repository_branches_tags_url,
                   repository_manifest_url, repository_path_contents_url,
-                  repository_path_raw_contents_url, repository_main_branch_url)
+                  repository_path_raw_contents_url, repository_main_branch_url,
+                  repository_branch_url, repository_tag_url)
 
 from deploykeys import BitBucketRepositoryDeployKeysClient
 from links import BitBucketRepositoryLinksClient
@@ -105,3 +106,16 @@ class BitBucketRepositoryClient(object):
     return self._dispatcher.dispatch(url, access_token=self._access_token,
                                           access_token_secret=self._access_token_secret)
 
+  def get_branch(self, branch_name):
+    """ Returns information about the branch with the specified name under this repository, if any.
+    """
+    url = repository_branch_url(self._namespace, self._repository_name, branch_name)
+    return self._dispatcher.dispatch(url, access_token=self._access_token,
+                                          access_token_secret=self._access_token_secret)
+
+  def get_tag(self, tag_name):
+    """ Returns information about the tag with the specified name under this repository, if any.
+    """
+    url = repository_tag_url(self._namespace, self._repository_name, tag_name)
+    return self._dispatcher.dispatch(url, access_token=self._access_token,
+                                          access_token_secret=self._access_token_secret)

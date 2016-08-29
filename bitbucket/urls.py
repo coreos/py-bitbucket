@@ -92,3 +92,12 @@ def repository_webhooks_url(namespace, repository):
 def repository_webhook_url(namespace, repository, service_id):
   """ Returns the contents of a webhook under a repository. """
   return _BASE_URL_V2 % ('repositories/%s/%s/hooks/%s' % (namespace, repository, service_id))
+
+def repository_branch_url(namespace, repository, branch_name):
+  """ URL for retrieiving a specific branch under a repository. """
+  return _BASE_URL_V2 % ('repositories/%s/%s/refs/branches/%s' % (namespace, repository,
+                                                                  branch_name))
+def repository_tag_url(namespace, repository, tag_name):
+  """ URL for retrieiving a specific tag under a repository. """
+  return _BASE_URL_V2 % ('repositories/%s/%s/refs/tags/%s' % (namespace, repository, tag_name))
+

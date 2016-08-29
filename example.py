@@ -43,4 +43,12 @@ def example():
 
   print data
 
+  print 'Looking up master branch'
+  (result, data, error_msg) = myrepo.get_branch('master')
+  if not result:
+    print error_msg
+    return
+
+  print data
+
 example()
