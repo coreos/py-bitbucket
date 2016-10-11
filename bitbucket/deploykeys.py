@@ -1,6 +1,6 @@
 """ Defines a client class for working with a specific BitBucket repository's deploy keys. """
 
-from urls import repository_deploy_keys_url, repository_deploy_key_url
+from bitbucket.urls import repository_deploy_keys_url, repository_deploy_key_url
 
 class BitBucketRepositoryDeployKeysClient(object):
   """ Client class representing the deploy keys under a repository in bitbucket. """

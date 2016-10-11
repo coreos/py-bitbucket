@@ -1,6 +1,6 @@
 """ Defines a client class for working with a specific BitBucket repository's services. """
 
-from urls import repository_services_url, repository_service_url
+from bitbucket.urls import repository_services_url, repository_service_url
 
 class BitBucketRepositoryServicesClient(object):
   """ Client class representing the services under a repository in bitbucket. """

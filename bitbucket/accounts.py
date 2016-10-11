@@ -1,6 +1,6 @@
 """ Defines a client class for working with the accounts API. """
 
-from urls import account_profile_url
+from bitbucket.urls import account_profile_url
 
 class BitBucketAccountsClient(object):
   """ A client for talking to the BitBucket accounts API. """

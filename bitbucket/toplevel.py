@@ -11,8 +11,8 @@ try:
 except ImportError:
     from urllib.parse import parse_qs
 
-from urls import request_token_url, authenticate_url, access_token_url
-from client import BitBucketClient
+from bitbucket.urls import request_token_url, authenticate_url, access_token_url
+from bitbucket.client import BitBucketClient
 
 
 class BitBucket(object):

@@ -1,6 +1,6 @@
 """ Defines a client class for working with a BitBucket namespace. """
 
-from repositories import BitBucketRepositoriesClient
+from bitbucket.repositories import BitBucketRepositoriesClient
 
 class BitBucketNamespaceClient(object):
   """ Client class representing a single namespace in bitbucket. """

@@ -1,6 +1,6 @@
 """ Defines a client class for working with a specific BitBucket repository's links. """
 
-from urls import repository_links_url, repository_link_url
+from bitbucket.urls import repository_links_url, repository_link_url
 
 class BitBucketRepositoryLinksClient(object):
   """ Client class representing the links under a repository in bitbucket. """

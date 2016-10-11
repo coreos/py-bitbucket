@@ -1,6 +1,6 @@
 """ Defines a client class for working with a specific BitBucket repository's change set. """
 
-from urls import repository_changesets_url, repository_changeset_url
+from bitbucket.urls import repository_changesets_url, repository_changeset_url
 
 class BitBucketRepositoryChangeSetsClient(object):
   """ Client class representing the changesets under a repository in bitbucket. """

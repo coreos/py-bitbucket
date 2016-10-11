@@ -1,6 +1,6 @@
 """ Defines a client class for working with BitBucket repositories. """
 
-from repository import BitBucketRepositoryClient
+from bitbucket.repository import BitBucketRepositoryClient
 
 class BitBucketRepositoriesClient(object):
   """ Client class representing the repositories under a namespace in bitbucket. """

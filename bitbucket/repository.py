@@ -1,15 +1,15 @@
 """ Defines a client class for working with a specific BitBucket repository. """
 
-from urls import (repository_branches_url, repository_tags_url, repository_branches_tags_url,
+from bitbucket.urls import (repository_branches_url, repository_tags_url, repository_branches_tags_url,
                   repository_manifest_url, repository_path_contents_url,
                   repository_path_raw_contents_url, repository_main_branch_url,
                   repository_branch_url, repository_tag_url)
 
-from deploykeys import BitBucketRepositoryDeployKeysClient
-from links import BitBucketRepositoryLinksClient
-from services import BitBucketRepositoryServicesClient
-from changesets import BitBucketRepositoryChangeSetsClient
-from webhooks import BitBucketRepositoryWebhooksClient
+from bitbucket.deploykeys import BitBucketRepositoryDeployKeysClient
+from bitbucket.links import BitBucketRepositoryLinksClient
+from bitbucket.services import BitBucketRepositoryServicesClient
+from bitbucket.changesets import BitBucketRepositoryChangeSetsClient
+from bitbucket.webhooks import BitBucketRepositoryWebhooksClient
 
 class BitBucketRepositoryClient(object):
   """ Client class representing a repository in bitbucket. """

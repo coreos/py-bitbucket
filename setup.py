@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = "0.1"
+version = "0.2"
 install_requires = ['requests', 'requests-oauthlib']
 
 setup(name='py-bitbucket',

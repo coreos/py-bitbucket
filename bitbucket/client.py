@@ -1,8 +1,8 @@
 """ Defines a client class for working with BitBucket with a set of auth credentials. """
 
-from urls import current_user_url, current_user_repos_url
-from namespace import BitBucketNamespaceClient
-from accounts import BitBucketAccountsClient
+from bitbucket.urls import current_user_url, current_user_repos_url
+from bitbucket.namespace import BitBucketNamespaceClient
+from bitbucket.accounts import BitBucketAccountsClient
 
 class BitBucketClient(object):
   """ A client for talking to the BitBucket API. """

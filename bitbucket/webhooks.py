@@ -1,7 +1,7 @@
 """ Defines a client class for working with a specific BitBucket repository's webhooks
     as defined in API v2: https://confluence.atlassian.com/display/BITBUCKET/webhooks+Resource. """
 
-from urls import repository_webhooks_url, repository_webhook_url
+from bitbucket.urls import repository_webhooks_url, repository_webhook_url
 
 class BitBucketRepositoryWebhooksClient(object):
   """ Client class representing the webhooks under a repository in bitbucket. """
